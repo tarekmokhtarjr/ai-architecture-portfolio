@@ -1,0 +1,1 @@
+This folder helps in visualizing architectural components and designs.

@@ -1,0 +1,1 @@
+Houses Architecture Decision Records (ADRs) as separate markdown files, e.g., 0001-model-hosting.md. ADRs document significant architectural decisions and their rationales.
