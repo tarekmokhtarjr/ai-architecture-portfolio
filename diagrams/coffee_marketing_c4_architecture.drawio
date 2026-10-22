@@ -1,0 +1,94 @@
+<mxfile host="Electron" agent="ChatGPT">
+  <diagram id="coffee-ai-marketing" name="C4 Container - MVP">
+    <mxGraphModel dx="3307" dy="906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="customer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br/&gt;Browses and purchases coffee&lt;br/&gt;Receives marketing emails" vertex="1">
+          <mxGeometry height="90" width="155" x="-320" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="marketing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;Marketing employee&lt;/b&gt;&lt;br/&gt;Reviews audience, content&lt;br/&gt;and campaign before send" vertex="1">
+          <mxGeometry height="90" width="155" x="472.5" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="odoo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="&lt;b&gt;Odoo e-commerce &amp;amp; CRM&lt;/b&gt;&lt;br/&gt;System of record:&lt;br/&gt;customers, products, orders,&lt;br/&gt;consent, campaigns" vertex="1">
+          <mxGeometry height="145" width="235" x="170" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="&lt;b&gt;Scheduled data pipeline&lt;/b&gt;&lt;br/&gt;Minimize + pseudonymize data&lt;br/&gt;Build customer-product interactions" vertex="1">
+          <mxGeometry height="105" width="220" x="650" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ml" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="&lt;b&gt;Python recommendation service&lt;/b&gt;&lt;br&gt;model&lt;br&gt;Training + batch inference" vertex="1">
+          <mxGeometry height="120" width="220" x="440" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="store" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="&lt;b&gt;Recommendation store&lt;/b&gt;&lt;br/&gt;Top-N products, score,&lt;br/&gt;timestamp and model version" vertex="1">
+          <mxGeometry height="100" width="205" x="1270" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="email" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" value="&lt;b&gt;Odoo Marketing Automation&lt;/b&gt;&lt;br/&gt;Eligibility / consent check&lt;br/&gt;Personalized email template&lt;br/&gt;Send approved campaign" vertex="1">
+          <mxGeometry height="125" width="220" x="690" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;Campaign feedback&lt;/b&gt;&lt;br/&gt;Opens, clicks, purchases,&lt;br/&gt;unsubscribes, complaints" vertex="1">
+          <mxGeometry height="95" width="205" x="1270" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;fontSize=13;" value="&lt;b&gt;Optional future chatbot&lt;/b&gt;&lt;br/&gt;LLM + catalogue-grounded answers&lt;br/&gt;Customer preference discovery&lt;br/&gt;&lt;i&gt;Not an MVP dependency&lt;/i&gt;" vertex="1">
+          <mxGeometry height="110" width="235" x="80" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" value="&lt;b&gt;Governance controls&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(ARB) checklist&lt;/span&gt;&amp;nbsp;+ CI release gate&lt;br&gt;Human campaign approval • audit trail" vertex="1">
+          <mxGeometry height="125" width="260" x="890" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="customer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="odoo" value="Orders / browsing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="odoo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="pipeline" value="Scheduled export">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="pipeline" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="ml" value="Pseudonymous interactions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="710" y="237.5" />
+              <mxPoint x="550" y="237.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="ml" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="store" value="Batch top-N results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="store" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="email" value="Recommendations">
+          <mxGeometry relative="1" x="-0.0682" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="800" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="odoo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="email" value="Consent + eligible audience">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="marketing" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="email" value="Approve campaign">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="email" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="customer" value="Personalized email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="email" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="metrics" value="Campaign outcomes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=block;endFill=1;" target="pipeline" value="Feedback for evaluation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="customer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=block;endFill=1;" target="llm" value="Optional product advice">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="llm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=block;endFill=1;" target="odoo" value="Catalogue access via controlled API">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
